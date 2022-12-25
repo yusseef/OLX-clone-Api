@@ -43,8 +43,8 @@ class User(AbstractUser):
     username = models.CharField(max_length = 50, unique = True)
     email = models.EmailField(max_length = 200, unique = True)
     phone_number = PhoneNumberField(null =False, unique = True)
-    location = models.CharField(max_length=200, choices=LOCATIONS)
-    photo = models.ImageField(upload_to ='photos/%y/%m/%d')
+    location = models.CharField(max_length=200, choices=LOCATIONS, null=True, blank = True)
+    photo = models.ImageField(upload_to ='photos/%y/%m/%d', default = 'photos/default.png')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
