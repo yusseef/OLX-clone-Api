@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'authentication',
 
     #Third party apps
-    "phonenumber_field",
+    'phonenumber_field',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
