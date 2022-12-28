@@ -6,5 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('sign-up/', include('authentication.urls')),
     path('auth/', include('djoser.urls.jwt')),
+    path('adv/', include('advertise.urls')),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

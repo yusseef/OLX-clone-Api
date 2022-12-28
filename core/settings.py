@@ -44,12 +44,13 @@ INSTALLED_APPS = [
 
     #My apps
     'authentication',
-
+    'advertise',
     #Third party apps
     'phonenumber_field',
     'rest_framework',
     'rest_framework_simplejwt',
     'djoser',
+    
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
