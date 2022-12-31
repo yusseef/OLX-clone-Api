@@ -10,9 +10,9 @@ class AdvertiseImageSerializer(serializers.ModelSerializer):
 class AdvertiseSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username') #Get username instead of id
     images = AdvertiseImageSerializer(many = True, read_only=True)
-    uploaded_images = serializers.ListField(
-    child = serializers.ImageField(max_length=1000000, allow_empty_file = False,
-    use_url = False, allow_null= True, required=False)
+    uploaded_images = serializers.ListField(required=False,
+    child = serializers.ImageField( max_length=1000000, allow_empty_file = True,
+    use_url = False, allow_null= True, )
     ,write_only= True ) #List field to enable multiple images
 
     class Meta:
