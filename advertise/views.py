@@ -10,6 +10,9 @@ from django.db.models.functions import Now
 from django.http import Http404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
 from authentication.UserPermission import IsOwnerOrReadOnly
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class AdvertisesListView(APIView):
     def get(self, request):
@@ -55,3 +58,20 @@ class AdvertisePkView(APIView):
         obj = self.get_object(id)
         obj.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserAdvertisesView(APIView):
+    
+    def get(self, request, user_id):
+        user = User.objects.get(pk = user_id)
+        user_advertises = Advertise.objects.all().filter(owner = user)
+        serializer = AdvertiseSerializer(user_advertises, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class UserAdvertiseDetatilView(APIView):
+    def get(self, request, user_id, ad_id):
+        user = User.objects.get(pk = user_id)
+        user_advertises = Advertise.objects.all().filter(owner = user).filter(id = ad_id)
+        serializer = AdvertiseSerializer(user_advertises, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

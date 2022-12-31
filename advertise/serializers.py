@@ -8,7 +8,8 @@ class AdvertiseImageSerializer(serializers.ModelSerializer):
 
 
 class AdvertiseSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username') #Get username instead of id
+    owner_id = serializers.ReadOnlyField(source = 'owner.id')
+    owner_name = serializers.ReadOnlyField(source='owner.username') #Get username instead of id
     images = AdvertiseImageSerializer(many = True, read_only=True)
     uploaded_images = serializers.ListField(required=False,
     child = serializers.ImageField( max_length=1000000, allow_empty_file = True,
@@ -17,7 +18,7 @@ class AdvertiseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Advertise
-        fields = ['id', 'owner', 'category', 'location', 'description',
+        fields = ['id', 'owner_id', 'owner_name',  'category', 'location', 'description',
          'price', 'expiration_date', 'created_at', 'images', 'uploaded_images']
 
     def create(self, validated_data):
