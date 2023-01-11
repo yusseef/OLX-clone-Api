@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthentic
 from authentication.UserPermission import IsOwnerOrReadOnly
 from django.contrib.auth import get_user_model
 
+
 User = get_user_model()
 
 class AdvertisesListView(APIView):
@@ -75,3 +76,5 @@ class UserAdvertiseDetatilView(APIView):
         user_advertises = Advertise.objects.all().filter(owner = user).filter(id = ad_id)
         serializer = AdvertiseSerializer(user_advertises, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
