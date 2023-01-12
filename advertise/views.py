@@ -11,9 +11,11 @@ from django.http import Http404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly
 from authentication.UserPermission import IsOwnerOrReadOnly
 from django.contrib.auth import get_user_model
-
+from django.conf import settings
+import stripe
 
 User = get_user_model()
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class AdvertisesListView(APIView):
     def get(self, request):
@@ -78,3 +80,25 @@ class UserAdvertiseDetatilView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+class StripeCheckoutView(APIView):
+    def post(self, request):
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[
+                    {
+                        'price': 'price_1MPUIXGslCuRnIIuUV1ME6Kn',
+                        'quantity': 1,
+                    },
+                ],
+                payment_method_types=['card',],
+                mode='payment',
+                success_url=settings.SITE_URL + '/?success=true&session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=settings.SITE_URL + '/?canceled=true',
+            )
+
+            return redirect(checkout_session.url)
+        except:
+            return Response(
+                {'error': 'Something went wrong when creating stripe checkout session'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )

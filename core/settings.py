@@ -152,6 +152,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'core/static'),
 ]
+STRIPE_SECRET_KEY = 'sk_test_51MPP8dGslCuRnIIuEcVNgEHcj31I5WMaGvnEGvfytJENd2peSJ8qIY0zisvNzTVw55yAZDzWXgOYrX6E3B2FM1z800Goyu71Xf'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
