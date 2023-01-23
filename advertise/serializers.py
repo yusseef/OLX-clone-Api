@@ -19,7 +19,7 @@ class AdvertiseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Advertise
         fields = ['id', 'owner_id', 'owner_name',  'category', 'location', 'description',
-         'price', 'expiration_date', 'created_at', 'images', 'uploaded_images']
+         'price', 'expiration_date', 'created_at', 'images', 'uploaded_images', 'is_active']
 
     def create(self, validated_data):
         uploaded_images = validated_data.pop("uploaded_images")

@@ -15,10 +15,10 @@ class Advertise(models.Model):
     expiration_date  = models.DateField(default = Expire_date, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
-    #is_active
+    is_active = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['created_at']
+        ordering = ['is_active']
 
 
     def __str__(self):

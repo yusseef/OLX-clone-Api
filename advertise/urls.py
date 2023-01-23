@@ -8,6 +8,7 @@ urlpatterns = [
     path('user_advertise/<str:user_id>/', UserAdvertisesView.as_view(), name = 'UserAdvertise'),
     path('user_advertise/<str:user_id>/<str:ad_id>/', UserAdvertiseDetatilView.as_view(), name = 'UserAdvertiseDetatil'),
     path('payment/<str:pk>', StripeCheckoutView.as_view()),
+    path('webhook/', stripe_webhook_view, name='webhook')
 
 
 ]

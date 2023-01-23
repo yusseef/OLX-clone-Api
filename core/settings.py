@@ -152,7 +152,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'core/static'),
 ]
+STRIPE_PUBLIC_KEY_TEST = 'pk_test_51MPP8dGslCuRnIIu3kTUzpCUZFwDQC8ko44hp0zGSj01piBeoZfCf1OGYtad6Yc664kIiJsIuwkj5VMjYzcRmL4d00dsP5ZlWA'
 STRIPE_SECRET_KEY = 'sk_test_51MPP8dGslCuRnIIuEcVNgEHcj31I5WMaGvnEGvfytJENd2peSJ8qIY0zisvNzTVw55yAZDzWXgOYrX6E3B2FM1z800Goyu71Xf'
+STRIPE_SECRET_WEBHOOK = 'whsec_736a3960b0a94e407c634e0e1dc243e417255d3b992a1137895bad984d07c3d4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
