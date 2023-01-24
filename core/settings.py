@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'djoser',
     
 ]
@@ -62,7 +63,7 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': False,
+    'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': False,
 
@@ -153,7 +154,7 @@ STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'core/static'),
 ]
 STRIPE_PUBLIC_KEY_TEST = config('STRIPE_PUBLIC_KEY_TEST')
-STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY ')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 STRIPE_SECRET_WEBHOOK = config('STRIPE_SECRET_WEBHOOK')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

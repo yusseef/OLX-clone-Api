@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('sign-up/', include('authentication.urls')),
+    path('account/', include('authentication.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('adv/', include('advertise.urls')),
 
